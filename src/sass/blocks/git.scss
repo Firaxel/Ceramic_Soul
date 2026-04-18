@@ -1,0 +1,165 @@
+@use "/src/sass/base/vars.scss" as v;
+
+.git {
+    padding-top: 60px;
+
+    &__wrapper {
+        margin-top: 60px;
+    }
+
+    &__img {
+        display: none;
+    }
+
+    &__forms {
+        position: relative;
+        min-height: 428px;
+    }
+
+    &__forms-img {
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__label {
+        display: block;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 200%;
+        color: v.$dark;
+
+        &:nth-child(2) {
+            margin-top: 8px;
+        }
+    }
+
+    &__input {
+        border: 1px solid #e2e1e5;
+        border-radius: 2px;
+        padding: 10px 15px;
+        width: 100%;
+        height: 48px;
+        background: #fff;
+        font-size: 14px;
+        line-height: 200%;
+        color: v.$dark;
+
+        &:focus {
+            outline: none;
+            border-color: v.$dark;
+        }
+
+        &::placeholder {
+            color: v.$ui-disabled;
+        }
+    }
+
+    &__input-area {
+        resize: none;
+        min-height: 132px;
+    }
+
+    &__check-block {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+
+        a {
+            margin-left: 2px;
+            text-decoration: none;
+            color: #a22dc6;
+        }
+    }
+
+    &__checkbox {
+        width: 15px;
+        height: 15px;
+        margin-right: 15px;
+    }
+
+    &__btn {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .git {
+        &__wrapper {
+            margin-top: 45px;
+            padding-left: 24px;
+        }
+
+        &__form {
+            width: 300px;
+        }
+
+        &__forms-img {
+            display: block;
+            width: 85px;
+            height: 85px;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .git {
+        &__wrapper {
+            margin-top: 80px;
+            padding-left: 0px;
+        }
+
+        &__img {
+            display: block;
+            padding-right: 20px;
+
+            img {
+                box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        &__forms {
+            padding-left: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .git {
+        padding-top: 100px;
+
+        &__img {
+            padding-right: 0px;
+        }
+
+        &__forms {
+            padding-left: 147px;
+            padding-right: 75px;
+            min-height: 356px;
+        }
+
+        &__form {
+            width: 645px;
+        }
+
+        &__fieldset {
+            display: flex;
+            column-gap: 45px;
+        }
+
+        &__input {
+            width: 300px;
+        }
+
+        &__forms-img {
+            right: 75px;
+        }
+    }
+}

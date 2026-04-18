@@ -1,0 +1,65 @@
+@use "/src/sass/base/mixins.scss" as m;
+@use "/src/sass/base/vars.scss" as v;
+
+.btn-default {
+    @include m.button;
+    width: 230px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.btn-send {
+    @include m.button;
+    width: 220px;
+    height: 40px;
+    font-size: 16px;
+
+    &:focus-visible {
+        outline: none;
+        border: 1px solid v.$ceramic;
+    }
+
+    &:disabled {
+        outline: none;
+        border: 1px solid v.$ui-disabled;
+        color: v.$ui-disabled;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .btn-default {
+        &:hover {
+            background-color: v.$dark;
+            color: v.$light;
+            transition: all 0.5s ease 0s;
+        }
+
+        &:active {
+            box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.4);
+            background: rgba(217, 217, 217, 0.1);
+            color: v.$dark;
+            border: none;
+        }
+    }
+
+    .btn-send {
+        &:hover {
+            outline: none;
+            border: 1px solid v.$ceramic;
+            color: v.$ceramic;
+        }
+
+        &:active {
+            outline: none;
+            border: 1px solid v.$ceramic;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1920px) {
+    .btn-default {
+        width: 330px;
+        height: 60px;
+    }
+}
