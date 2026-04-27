@@ -37,3 +37,5 @@ try {
         modules: [Navigation, Pagination],
     });
 } catch (e) { };
+
+document.getElementById('year').textContent = new Date().getFullYear();

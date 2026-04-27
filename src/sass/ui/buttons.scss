@@ -26,6 +26,24 @@
     }
 }
 
+.btn-submit {
+    @include m.button;
+    width: 90px;
+    height: 40px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid v.$light;
+    border-radius: 2px;
+    text-transform: uppercase;
+    color: v.$light;
+
+    &:disabled {
+        background-color: v.$ui-disabled;
+        color: v.$ui-disabled;
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .btn-default {
         &:hover {
