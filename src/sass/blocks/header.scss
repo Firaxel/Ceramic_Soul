@@ -40,7 +40,7 @@
         width: 100vw;
         height: 100vh;
         background-color: v.$light;
-        transition: all .5s;
+        transition: all 0.5s;
         opacity: 0;
 
         &_active {
@@ -114,6 +114,7 @@
     flex-direction: column;
     row-gap: 10px;
     padding-right: 35px;
+    cursor: pointer;
 
     span {
         display: block;
