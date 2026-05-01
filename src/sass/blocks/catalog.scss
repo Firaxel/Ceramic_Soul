@@ -1,0 +1,138 @@
+@use "/src/sass/base/vars.scss" as v;
+
+.catalog {
+    padding: 50px 0 60px 0;
+
+    &__title {
+        margin-top: 60px;
+    }
+
+    &__tabs {
+        margin-top: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 50px;
+        row-gap: 13px;
+        padding: 13px 25px;
+        border: 1px solid v.$dark;
+
+    }
+
+    &__tab {
+        position: relative;
+        padding: 0;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #000;
+        border: none;
+        background-color: v.$light;
+        cursor: pointer;
+
+        &_active::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -1px;
+            background-color: #000;
+        }
+    }
+
+    &__content {
+        margin-top: 60px;
+    }
+
+    &__content-item {
+        display: grid;
+        justify-items: center;
+        align-items: start;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 20px;
+    }
+
+    &__product-card {
+        box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &__img {
+        box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &__product-info {
+        padding: 12px 12px 17px 12px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: normal;
+        color: #000;
+        border: 1px solid #000;
+        border-top: none;
+
+    }
+
+    &__product-price {
+        margin-top: 8px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .catalog {
+        &__tabs {
+            min-width: 460px;
+            width: fit-content;
+        }
+
+        &__content {
+            padding: 10px 10px 0px 10px;
+        }
+
+        &__content-item {
+            position: relative;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                left: -10px;
+                top: -10px;
+                border: 1px solid v.$dark;
+                border-right: none;
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .catalog {
+        &__content {
+            padding: 25px 25px 0px 25px;
+        }
+
+        &__content-item {
+            gap: 35px;
+
+            &::before {
+                left: -25px;
+                top: -25px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .catalog {
+
+        &__content-item {
+            grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+            gap: 35px;
+
+            &::before {
+                left: -25px;
+                top: -25px;
+            }
+        }
+    }
+}

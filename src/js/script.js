@@ -53,4 +53,23 @@ try {
     });
 } catch (e) { };
 
+try {
+    const tabs = document.querySelectorAll(".catalog__tab");
+    const contents = document.querySelectorAll(".catalog__content-item");
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => {
+            //remove active class from all tabs and content
+            tabs.forEach((t) => t.classList.remove("catalog__tab_active"));
+            contents.forEach((c) => (c.style.display = "none"));
+            //add active class to clicked tab and show related content
+            tab.classList.add("catalog__tab_active");
+            contents[index].style.display = "grid";
+        });
+    });
+
+    //show default(first) content on pages opening
+    contents.forEach((c, i) => (c.style.display = i === 0 ? "grid" : "none"));
+} catch (e) { };
+
 document.getElementById('year').textContent = new Date().getFullYear();
