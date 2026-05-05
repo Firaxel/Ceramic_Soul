@@ -2,6 +2,7 @@
 @use "/src/sass/base/mixins.scss" as m;
 
 
+
 .footer {
     padding: 50px 0;
     background-color: v.$dark ;
@@ -24,7 +25,7 @@
     }
 
     &__input {
-        // display: block;
+        display: block;
         width: 100%;
         margin-top: 40px;
         border: none;
@@ -32,6 +33,18 @@
         color: v.$ui-active;
         font-size: 14px;
         font-style: normal;
+
+        &:user-invalid+.footer__divider {
+            background-color: v.$ui-error;
+        }
+
+        &:user-invalid {
+            color: v.$ui-error;
+
+            &::placeholder {
+                color: v.$ui-error;
+            }
+        }
     }
 
     &__divider {
@@ -77,6 +90,8 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
+
+
     }
 
     &__info {
@@ -85,31 +100,26 @@
         flex-wrap: wrap;
         width: 62.5%;
         column-gap: 20%;
+
+        a {
+            color: v.$light;
+        }
     }
 
     ul {
         list-style-type: none;
-        /* Прибирає буліти (точки) */
         padding: 0;
-        /* Прибирає внутрішній відступ зліва */
         margin: 40px 0 0 0;
         font-size: 14px;
 
-        /* Прибирає зовнішні відступи зверху/знизу */
         li {
             margin-bottom: 20px;
         }
     }
 
-
-
     a {
         text-decoration: none;
-        /* Прибирає нижнє підкреслення */
-        color: v.$light;
-        /* Робить колір таким самим, як у тексту навколо */
         cursor: pointer;
-        /* Залишає курсор-палець (можна змінити на default) */
     }
 
     &__discover {
@@ -143,7 +153,6 @@
                 margin: 0;
             }
         }
-
     }
 
     &__follow {

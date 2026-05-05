@@ -3,6 +3,10 @@
 .git {
     padding-top: 60px;
 
+    .just-validate-error-field {
+        border: 1px solid v.$ui-error;
+    }
+
     &__wrapper {
         margin-top: 60px;
     }

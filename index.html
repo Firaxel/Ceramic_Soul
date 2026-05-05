@@ -112,10 +112,12 @@
                         <label class="git__label" for="question">Your question</label>
                         <textarea class="git__input git__input-area" name="question" id="question"
                             placeholder="Question" required></textarea>
+                        <div class="textarea-error-message"></div>
                         <label class="git__label git__check-block" for="checkbox">
                             <input class="git__checkbox" type="checkbox" id="checkbox" name="checkbox" required>
                             I agree with the <a href="#">terms</a>
                         </label>
+                        <div class="checkbox-error-message"></div>
                         <button class="btn-send git__btn">send request</button>
                     </form>
                     <img src="src/img/git/vase.png" alt="vase" class="git__forms-img">
@@ -158,20 +160,22 @@
     <footer class="footer footer__textstyle">
         <div class="container">
             <div class="footer__wrapper">
-                <section class="footer__subscribe">
+                <form class="footer__subscribe" action="#">
                     <h2 class="title-footer">newsletter</h2>
                     <label class="footer__email" for="email-subscribe">Keep up to date with news and
                         promotions</label>
                     <input class="footer__input" type="email" id="email-subscribe" name="email-subscribe"
                         placeholder="Enter your e-mail" required>
                     <div class="footer__divider"></div>
+                    <div class="footer-email-error-message"></div>
                     <label class="footer__check-block" for="checkbox-subscribe">
                         <input class="footer__checkbox" type="checkbox" id="checkbox-subscribe"
                             name="checkbox-subscribe" required>
                         I agree with the <a href="#">terms</a>
                     </label>
+                    <div class="footer-checkbox-error-message"></div>
                     <button class="btn-submit">submit</button>
-                </section>
+                </form>
                 <section class="footer__info">
                     <div class="footer__discover">
                         <h2 class="title-footer">discover</h2>
