@@ -10,6 +10,106 @@ import JustValidate from 'just-validate';
 
 import "/src/sass/style.scss";
 
+function initFooterValidation() {
+    try {
+        // main form validation(if exists)
+        const gitForm = document.querySelector('.git__form');
+        if (gitForm) {
+            const validator = new JustValidate('.git__form');
+            validator
+                .addField('#name', [
+                    { rule: 'required', errorMessage: 'Please, enter your name' },
+                    { rule: 'minLength', value: 2, errorMessage: 'Name should be at least 2 symbols' },
+                ])
+                .addField('#email', [
+                    { rule: 'required', errorMessage: 'Enter your email, please...' },
+                    { rule: 'email', errorMessage: 'Type correct email, please...' },
+                ])
+                .addField('#question', [
+                    { rule: 'required', errorMessage: 'Enter your question, please...' },
+                    { rule: 'minLength', value: 10, errorMessage: 'Question should be 10 symbols at least...' },
+                ], {
+                    errorsContainer: document.querySelector('#question').parentElement.querySelector(".textarea-error-message"),
+                })
+                .addField("#checkbox", [
+                    { rule: "required", errorMessage: 'Please, read the terms and check the box' }
+                ], {
+                    errorsContainer: document.querySelector('#checkbox').parentElement.parentElement.querySelector(".checkbox-error-message"),
+                })
+                .onSuccess((event) => {
+                    const form = event.currentTarget;
+                    const formData = new FormData(form);
+
+                    fetch("https://httpbin.org/post", {
+                        method: "POST",
+                        body: formData,
+                    }).then(res => res.json()).then(data => {
+                        console.log("Success", data);
+                        form.reset();
+                    })
+                });
+        }
+
+        // footer form validation
+        const subscribeForm = document.querySelector(".footer__subscribe");
+        if (subscribeForm) {
+            const footer__validator = new JustValidate(".footer__subscribe");
+            footer__validator
+                .addField("#email-subscribe", [
+                    { rule: "required", errorMessage: "Enter your email, please..." },
+                    { rule: 'email', errorMessage: 'Type correct email, please...' }
+                ], {
+                    errorsContainer: document.querySelector("#email-subscribe").parentElement.querySelector(".footer-email-error-message"),
+                })
+                .addField("#checkbox-subscribe", [
+                    { rule: "required", errorMessage: 'Please, read the terms and check the box' }
+                ], {
+                    errorsContainer: document.querySelector("#checkbox-subscribe").parentElement.parentElement.querySelector(".footer-checkbox-error-message"),
+                })
+                .onSuccess((event) => {
+                    const form = event.currentTarget;
+                    const formData = new FormData(form);
+
+                    fetch("https://httpbin.org/post", {
+                        method: "POST",
+                        body: formData,
+                    }).then(res => res.json()).then(data => {
+                        console.log("Success", data);
+                        form.reset();
+                    })
+                });
+        }
+
+        // year update
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    } catch (error) {
+        console.error("Validation init error:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const placeholder = document.getElementById('footer__container');
+
+    if (placeholder) {
+        fetch('./footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Footer not found');
+                return response.text();
+            })
+            .then(data => {
+                placeholder.innerHTML = data;
+                //   run validation
+                initFooterValidation();
+            })
+            .catch(err => console.error('Error loading footer:', err));
+    } else {
+        // if footer doesnt exist - run main form validation
+        initFooterValidation();
+    }
+})
+
 const burger = document.querySelector(".burger"),
     close = document.querySelector(".header__menu-close"),
     menu = document.querySelector(".header__menu");
@@ -73,87 +173,3 @@ try {
     //show default(first) content on pages opening
     contents.forEach((c, i) => (c.style.display = i === 0 ? "grid" : "none"));
 } catch (e) { };
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-try {
-    const validator = new JustValidate('.git__form');
-
-    validator
-        .addField('#name', [
-            {
-                rule: 'required',
-                errorMessage: 'Please, enter your name',
-            },
-            {
-                rule: 'minLength',
-                value: 2,
-                errorMessage: 'Name should be at least 2 symbols',
-            },
-
-
-        ])
-        .addField('#email', [
-            {
-                rule: 'required',
-                errorMessage: 'Enter your email, please...',
-            },
-            {
-                rule: 'email',
-                errorMessage: 'Type correct email, please...',
-            },
-        ])
-
-        .addField('#question', [
-            {
-                rule: 'required',
-                errorMessage: 'Enter your question, please...',
-            },
-            {
-                rule: 'minLength',
-                value: 10,
-                errorMessage: 'Question should be 10 symbols at least...',
-            },
-        ], {
-            errorsContainer: document.querySelector('#question').parentElement.querySelector(".textarea-error-message"),
-        })
-
-        .addField("#checkbox", [
-            {
-                rule: "required",
-                errorMessage: 'Please, read the terms and check the box',
-            }
-        ], {
-            errorsContainer: document.querySelector('#checkbox').parentElement.parentElement.querySelector(".checkbox-error-message"),
-        })
-} catch (error) {
-
-};
-
-try {
-    const footer__validator = new JustValidate(".footer__subscribe");
-
-    footer__validator
-        .addField("#email-subscribe", [
-            {
-                rule: "required",
-                errorMessage: "Enter your email, please...",
-            },
-            {
-                rule: 'email',
-                errorMessage: 'Type correct email, please...',
-            }
-        ], {
-            errorsContainer: document.querySelector("#email-subscribe").parentElement.querySelector(".footer-email-error-message"),
-        })
-        .addField("#checkbox-subscribe", [
-            {
-                rule: "required",
-                errorMessage: 'Please, read the terms and check the box',
-            }
-        ], {
-            errorsContainer: document.querySelector("#checkbox-subscribe").parentElement.parentElement.querySelector(".footer-checkbox-error-message"),
-        })
-} catch (error) {
-
-}

@@ -2,8 +2,10 @@
 @use "/src/sass/libs/grids-responsive-min.css";
 @use "/src/sass/libs/modern-normalize.min.css";
 @use "/src/sass/libs/fontello.css";
+
 @use "/src/sass/base/vars.scss";
 @use "/src/sass/base/basic.scss";
+@use "/src/sass/base/animations.scss";
 
 @use "/src/sass/ui/forms.scss";
 @use "/src/sass/ui/titles.scss";

@@ -82,6 +82,10 @@
         &__title {
             padding-right: 10px;
         }
+
+        &__cta {
+            animation: slideIn 2s 1s ease-in-out;
+        }
     }
 }
 

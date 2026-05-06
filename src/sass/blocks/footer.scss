@@ -1,7 +1,11 @@
 @use "/src/sass/base/vars.scss" as v;
 @use "/src/sass/base/mixins.scss" as m;
 
+.just-validate-error-field {
+    border: none;
+    outline: none;
 
+}
 
 .footer {
     padding: 50px 0;
@@ -39,7 +43,7 @@
         }
 
         &:user-invalid {
-            color: v.$ui-error;
+            color: v.$light;
 
             &::placeholder {
                 color: v.$ui-error;

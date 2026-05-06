@@ -1,0 +1,50 @@
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes dropDownVase {
+    0% {
+        transform: translateY(-345px) scale(1, 1);
+        animation-timing-function: ease-in;
+    }
+
+    20% {
+        transform: translateY(0) scale(1.2, 0.7);
+        animation-timing-function: ease-out;
+    }
+
+    35% {
+        transform: translateY(-170px) scale(1, 1);
+        animation-timing-function: ease-in;
+    }
+
+    50% {
+        transform: translateY(0) scale(1.1, 0.8);
+        animation-timing-function: ease-out;
+    }
+
+    65% {
+        transform: translateY(-70px) scale(1, 1);
+        animation-timing-function: ease-in;
+    }
+
+    80% {
+        transform: translateY(0) scale(1.05, 0.9);
+        animation-timing-function: ease-out;
+    }
+
+    90% {
+        transform: translateY(-20px) scale(1, 1);
+        animation-timing-function: ease-in;
+    }
+
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+}

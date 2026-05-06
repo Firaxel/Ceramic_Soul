@@ -25,6 +25,9 @@
         position: absolute;
         right: 0;
         bottom: 0;
+
+        animation: dropDownVase 5s ease-in-out forwards;
+
     }
 
     &__fieldset {

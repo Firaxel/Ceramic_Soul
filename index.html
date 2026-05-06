@@ -97,7 +97,7 @@
                     <img src="/src/img/git/tea.jpg" alt="tea set">
                 </div>
                 <div class="pure-u-1 pure-u-xl-12-24 pure-u-xxl-3-5 git__forms">
-                    <form class="git__form" action="#">
+                    <form autocomplete="on" class="git__form" action="#">
                         <fieldset class="git__fieldset">
                             <div class="git__input-block">
                                 <label class="git__label" for="name">Name</label>
@@ -106,7 +106,7 @@
                             <div class="git__input-block">
                                 <label class="git__label" for="email">Email</label>
                                 <input class="git__input" type="email" id="email" name="email" placeholder="Email"
-                                    required>
+                                    autocomplete="email" required>
                             </div>
                         </fieldset>
                         <label class="git__label" for="question">Your question</label>
@@ -118,7 +118,7 @@
                             I agree with the <a href="#">terms</a>
                         </label>
                         <div class="checkbox-error-message"></div>
-                        <button class="btn-send git__btn">send request</button>
+                        <button type="submit" class="btn-send git__btn">send request</button>
                     </form>
                     <img src="src/img/git/vase.png" alt="vase" class="git__forms-img">
                 </div>
@@ -157,60 +157,8 @@
         </div>
     </section>
 
-    <footer class="footer footer__textstyle">
-        <div class="container">
-            <div class="footer__wrapper">
-                <form class="footer__subscribe" action="#">
-                    <h2 class="title-footer">newsletter</h2>
-                    <label class="footer__email" for="email-subscribe">Keep up to date with news and
-                        promotions</label>
-                    <input class="footer__input" type="email" id="email-subscribe" name="email-subscribe"
-                        placeholder="Enter your e-mail" required>
-                    <div class="footer__divider"></div>
-                    <div class="footer-email-error-message"></div>
-                    <label class="footer__check-block" for="checkbox-subscribe">
-                        <input class="footer__checkbox" type="checkbox" id="checkbox-subscribe"
-                            name="checkbox-subscribe" required>
-                        I agree with the <a href="#">terms</a>
-                    </label>
-                    <div class="footer-checkbox-error-message"></div>
-                    <button class="btn-submit">submit</button>
-                </form>
-                <section class="footer__info">
-                    <div class="footer__discover">
-                        <h2 class="title-footer">discover</h2>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__shopping">
-                        <h2 class="title-footer">shopping</h2>
-                        <ul>
-                            <li><a href="#">Catalog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__information">
-                        <h2 class="title-footer">information</h2>
-                        <ul>
-                            <li><a href="#">Terms and Conditions</a></li>
-                        </ul>
-                    </div>
-                </section>
-                <section class="footer__follow">
-                    <h2 class="title-footer">follow us</h2>
-                    <div class="footer__wrapper-icons">
-                        <a href="#" class="icon-facebook-circled"></a>
-                        <a href="#" class="icon-instagram"></a>
-                        <a href="#" class="icon-pinterest"></a>
-                    </div>
-                </section>
-            </div>
-            <div class="footer__copyright">
-                <small>&COPY Copyright <span id="year"></span>, Ceramic soul</small>
-            </div>
-        </div>
-    </footer>
+    <div id="footer__container"></div>
+
     <script type="module" src="/src/js/script.js"></script>
 </body>
 
