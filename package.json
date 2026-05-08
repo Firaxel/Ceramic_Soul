@@ -12,7 +12,10 @@
   "devDependencies": {
     "postcss-pxtorem": "^6.1.0",
     "sass": "^1.99.0",
+    "sharp": "^0.34.5",
+    "svgo": "^4.0.1",
     "vite": "^8.0.8",
+    "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-mkcert": "^2.0.0"
   },
   "dependencies": {

@@ -10,102 +10,113 @@ import JustValidate from 'just-validate';
 
 import "/src/sass/style.scss";
 
-function initFooterValidation() {
-    try {
-        // main form validation(if exists)
-        const gitForm = document.querySelector('.git__form');
-        if (gitForm) {
-            const validator = new JustValidate('.git__form');
-            validator
-                .addField('#name', [
-                    { rule: 'required', errorMessage: 'Please, enter your name' },
-                    { rule: 'minLength', value: 2, errorMessage: 'Name should be at least 2 symbols' },
-                ])
-                .addField('#email', [
-                    { rule: 'required', errorMessage: 'Enter your email, please...' },
-                    { rule: 'email', errorMessage: 'Type correct email, please...' },
-                ])
-                .addField('#question', [
-                    { rule: 'required', errorMessage: 'Enter your question, please...' },
-                    { rule: 'minLength', value: 10, errorMessage: 'Question should be 10 symbols at least...' },
-                ], {
-                    errorsContainer: document.querySelector('#question').parentElement.querySelector(".textarea-error-message"),
-                })
-                .addField("#checkbox", [
-                    { rule: "required", errorMessage: 'Please, read the terms and check the box' }
-                ], {
-                    errorsContainer: document.querySelector('#checkbox').parentElement.parentElement.querySelector(".checkbox-error-message"),
-                })
-                .onSuccess((event) => {
-                    const form = event.currentTarget;
-                    const formData = new FormData(form);
+import footerHtml from '/footer.html?raw';
 
-                    fetch("https://httpbin.org/post", {
-                        method: "POST",
-                        body: formData,
-                    }).then(res => res.json()).then(data => {
-                        console.log("Success", data);
-                        form.reset();
-                    })
-                });
+const observerOptions = {
+    root: null, // стежимо відносно вікна браузера
+    threshold: 0.2 // анімація почнеться, коли з'явиться 20% елемента
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Додаємо клас, який запускає анімацію
+            entry.target.classList.add('git__forms-img_animation');
+
+            // КЛЮЧОВИЙ МОМЕНТ: видаляємо елемент зі списку спостереження.
+            // Тепер анімація не буде скидатися чи залежати від скролу.
+            observer.unobserve(entry.target);
         }
+    });
+}, observerOptions);
 
-        // footer form validation
-        const subscribeForm = document.querySelector(".footer__subscribe");
-        if (subscribeForm) {
-            const footer__validator = new JustValidate(".footer__subscribe");
-            footer__validator
-                .addField("#email-subscribe", [
-                    { rule: "required", errorMessage: "Enter your email, please..." },
-                    { rule: 'email', errorMessage: 'Type correct email, please...' }
-                ], {
-                    errorsContainer: document.querySelector("#email-subscribe").parentElement.querySelector(".footer-email-error-message"),
-                })
-                .addField("#checkbox-subscribe", [
-                    { rule: "required", errorMessage: 'Please, read the terms and check the box' }
-                ], {
-                    errorsContainer: document.querySelector("#checkbox-subscribe").parentElement.parentElement.querySelector(".footer-checkbox-error-message"),
-                })
-                .onSuccess((event) => {
-                    const form = event.currentTarget;
-                    const formData = new FormData(form);
+// Знаходимо елемент
+const imgElement = document.querySelector('.git__forms-img');
 
-                    fetch("https://httpbin.org/post", {
-                        method: "POST",
-                        body: formData,
-                    }).then(res => res.json()).then(data => {
-                        console.log("Success", data);
-                        form.reset();
-                    })
-                });
-        }
+// Перевіряємо, чи він існує, і запускаємо спостереження
+if (imgElement) {
+    observer.observe(imgElement);
+}
+function initGitValidation() {
 
-        // year update
-        const yearEl = document.getElementById('year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    } catch (error) {
-        console.error("Validation init error:", error);
+    const gitForm = document.querySelector('.git__form');
+    if (gitForm) {
+        const validator = new JustValidate('.git__form');
+        validator
+            .addField('#name', [
+                { rule: 'required', errorMessage: 'Please, enter your name' },
+                { rule: 'minLength', value: 2, errorMessage: 'Name should be at least 2 symbols' },
+            ])
+            .addField('#email', [
+                { rule: 'required', errorMessage: 'Enter your email, please...' },
+                { rule: 'email', errorMessage: 'Type correct email, please...' },
+            ])
+            .addField('#question', [
+                { rule: 'required', errorMessage: 'Enter your question, please...' },
+                { rule: 'minLength', value: 10, errorMessage: 'Question should be 10 symbols at least...' },
+            ], {
+                errorsContainer: document.querySelector('#question').parentElement.querySelector(".textarea-error-message"),
+            })
+            .addField("#checkbox", [
+                { rule: "required", errorMessage: 'Please, read the terms and check the box' }
+            ], {
+                errorsContainer: document.querySelector('#checkbox').parentElement.parentElement.querySelector(".checkbox-error-message"),
+            })
+            .onSuccess((event) => {
+                sendFormData(event.currentTarget)
+            });
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const placeholder = document.getElementById('footer__container');
+// footer form validation
+function initFooterValidation() {
+    const subscribeForm = document.querySelector(".footer__subscribe");
+    if (subscribeForm) {
+        const footer__validator = new JustValidate(".footer__subscribe");
+        footer__validator
+            .addField("#email-subscribe", [
+                { rule: "required", errorMessage: "Enter your email, please..." },
+                { rule: 'email', errorMessage: 'Type correct email, please...' }
+            ], {
+                errorsContainer: document.querySelector("#email-subscribe").parentElement.querySelector(".footer-email-error-message"),
+            })
+            .addField("#checkbox-subscribe", [
+                { rule: "required", errorMessage: 'Please, read the terms and check the box' }
+            ], {
+                errorsContainer: document.querySelector("#checkbox-subscribe").parentElement.parentElement.querySelector(".footer-checkbox-error-message"),
+            })
+            .onSuccess((event) => {
+                sendFormData(event.currentTarget)
+            });
+    }
 
-    if (placeholder) {
-        fetch('./footer.html')
-            .then(response => {
-                if (!response.ok) throw new Error('Footer not found');
-                return response.text();
-            })
-            .then(data => {
-                placeholder.innerHTML = data;
-                //   run validation
-                initFooterValidation();
-            })
-            .catch(err => console.error('Error loading footer:', err));
-    } else {
-        // if footer doesnt exist - run main form validation
+    // year update
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+function sendFormData(form) {
+    const formData = new FormData(form);
+    fetch("https://httpbin.org/post", {
+        method: "POST",
+        body: formData,
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log("Success", data);
+            form.reset();
+        })
+        .catch(err => console.error("Send error:", err));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // check GIT form and send form
+    initGitValidation();
+
+    // inject footer if place for it and itself exists and then check and send form
+    const placeholder = document.getElementById('footer__container');
+    if (placeholder && footerHtml) {
+        placeholder.innerHTML = footerHtml;
         initFooterValidation();
     }
 })

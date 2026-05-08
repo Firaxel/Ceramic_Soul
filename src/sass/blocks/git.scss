@@ -21,12 +21,11 @@
     }
 
     &__forms-img {
-        display: none;
+        visibility: hidden;
         position: absolute;
         right: 0;
         bottom: 0;
 
-        animation: dropDownVase 5s ease-in-out forwards;
 
     }
 
@@ -37,6 +36,7 @@
     }
 
     &__label {
+
         display: block;
         font-weight: 400;
         font-size: 14px;
@@ -109,10 +109,18 @@
         }
 
         &__forms-img {
+            visibility: visible;
             display: block;
             width: 85px;
             height: 85px;
+            transform: translateY(-345px);
+
+            &_animation {
+                animation: dropDownVase 5s ease-in-out forwards;
+            }
+
         }
+
     }
 }
 
@@ -135,6 +143,8 @@
         &__forms {
             padding-left: 20px;
         }
+
+
     }
 }
 
