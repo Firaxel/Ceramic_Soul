@@ -9,6 +9,8 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+    base: "/Ceramic_Soul/",
+
     build: {
         rollupOptions: {
             input: {
