@@ -198,7 +198,7 @@ const searchData = [
     {
         title: "About us",
         url: "about.html",
-        content: "check out our works tea set ceremony portfolio projects handmade artistry traditional craftsmanship pottery workshop creative space working with clay masterclasses handmade art pottery journey ceramics studio personal expression functional ceramics pottery community creative workshop spark creativity pottery skills"
+        content: "check out our works tea set ceremony portfolio projects handmade artistry traditional craftsmanship pottery workshop creative space working with clay masterclasses handmade art pottery journey ceramics studio personal expression functional ceramics pottery community creative workshop spark creativity pottery skills map "
     }
 ];
 
