@@ -84,7 +84,8 @@
         }
 
         &__cta {
-            animation: slideIn 2s 1s ease-in-out;
+            opacity: 0;
+            animation: slideIn 2s ease-in-out forwards;
         }
     }
 }

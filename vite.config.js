@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from 'vite';
 import mkcert from 'vite-plugin-mkcert';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import injectHTML from 'vite-plugin-html-inject';
 
 
 
@@ -88,6 +89,8 @@ export default defineConfig({
         }),
 
         mkcert(),
+
+        injectHTML(),
     ],
 
     server: {

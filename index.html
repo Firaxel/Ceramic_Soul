@@ -2,85 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ceramic soul website">
-    <meta name="author" content="Firaxel">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://metatags.io/" />
-    <meta property="og:title" content="Ceramic Soul" />
-    <meta property="og:description" content="  Where each piece tells a story of craftsmanship and creativity. Our handmade ceramics are thoughtfully designed and carefully crafted, blending traditional techniques with modern aesthetics. Whether you're  looking for a unique gift or a special addition to your home, our collection offers timeless pieces that bring warmth and authenticity to any space.
-    " />
-    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
-
-    <!-- X (Twitter) -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://metatags.io/" />
-    <meta property="twitter:title" content="Ceramic Soul" />
-    <meta property="twitter:description" content="  Where each piece tells a story of craftsmanship and creativity. Our handmade Сeramics are thoughtfully designed and carefully crafted, blending traditional techniques with modern aesthetics. Whether you're  looking for a unique gift or a special addition to your home, our collection offers timeless pieces that bring warmth and authenticity to any space.
-    " />
-    <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
-
-    <link rel="apple-touch-icon" sizes="57x57" href="src/icons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="src/icons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="src/icons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="src/icons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="src/icons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="src/icons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="src/icons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="src/icons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="src/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="src/icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="src/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="src/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="src/icons/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="src/icons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-
+    <load src="src/partials/head.html" />
     <title>Ceramic soul</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;1,400&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
     <section class="promo">
         <img src="/src/img/promo/potter.jpg" alt="potter" class="promo__potter">
         <div class="container">
-            <div class="header">
-                <div class="header__menu">
-                    <button class="header__menu-close"></button>
-                    <nav class="header__menu-nav">
-                        <ul>
-                            <li><a class="header__menu-link" href="catalog.html">catalog</a></li>
-                            <li><a class="header__menu-link" href="blog.html">blog</a></li>
-                            <li><a class="header__menu-link" href="about.html">about</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="header__main">
-                    <div class="burger"><span></span><span></span><span></span></div>
-                    <a href="index.html" class="header__logo"><img src="/src/logo/ceramic_logo.png" alt="logo"></a>
-                    <div class="header__icons">
-                        <a href=""><span class="icon-search"></span></a>
-                        <a href=""><span class="icon-shopping-bag"></span></a>
-                    </div>
-                </div>
-                <nav class="header__nav">
-                    <ul>
-                        <li><a href="catalog.html" class="header__link">catalog</a></li>
-                        <li><a href="blog.html" class="header__link">blog</a></li>
-                        <li><a href="about.html" class="header__link">about</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <load src="/src/partials/header.html" />
             <div class="promo__wrapper">
                 <h1 class="title-h1-italic promo__title">Make your dream come true <br>
                     or decorate your home</h1>
@@ -193,7 +123,7 @@
         </div>
     </section>
 
-    <div id="footer__container"></div>
+    <load src="src/partials/footer.html" />
 
     <script type="module" src="/src/js/script.js"></script>
 </body>

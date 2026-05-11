@@ -1,0 +1,39 @@
+<div class="header">
+    <div class="header__menu">
+        <button class="header__menu-close"></button>
+        <nav class="header__menu-nav">
+            <ul>
+                <li><a class="header__menu-link" href="catalog.html">catalog</a></li>
+                <li><a class="header__menu-link" href="blog.html">blog</a></li>
+                <li><a class="header__menu-link" href="about.html">about</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header__main">
+        <div class="burger"><span></span><span></span><span></span></div>
+        <a href="index.html" class="header__logo"><img src="/src/logo/ceramic_logo.png" alt="logo"></a>
+
+
+        <div class="search-field" id="searchField">
+            <input type="text" id="search-input" placeholder="Search..." onkeyup="runSearch()">
+            <ul id="search-results" class="search-results-list"></ul>
+        </div>
+
+        <div class="header__icons">
+            <button class="search-icon-btn" onclick="toggleSearch()"><span class="icon-search"></span></button>
+            <a href="catalog.html"><span class="icon-shopping-bag"></span></a>
+        </div>
+
+        <!-- <div class="header__icons">
+            <a href="" class="search-icon-btn" onclick="toggleSearch()"><span class="icon-search"></span></a>
+            <a href="catalog.html"><span class="icon-shopping-bag"></span></a>
+        </div> -->
+    </div>
+    <nav class="header__nav">
+        <ul>
+            <li><a href="catalog.html" class="header__link">catalog</a></li>
+            <li><a href="blog.html" class="header__link">blog</a></li>
+            <li><a href="about.html" class="header__link">about</a></li>
+        </ul>
+    </nav>
+</div>

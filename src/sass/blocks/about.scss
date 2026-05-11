@@ -36,7 +36,8 @@
     .about {
         &__img {
             display: block;
-            padding: 0 60px 0 60px;
+            width: 600px;
+            margin: 0 auto;
         }
     }
 
@@ -45,7 +46,8 @@
 @media screen and (min-width: 1200px) {
     .about {
         &__img {
-            padding: 0 20px 0 0;
+            width: 550px;
+            margin-right: 20px;
         }
     }
 }
@@ -53,6 +55,10 @@
 @media screen and (min-width: 1920px) {
     .about {
         padding-top: 40px;
+
+        &__img {
+            width: 700px;
+        }
 
         &__title {
             margin-top: 100px;

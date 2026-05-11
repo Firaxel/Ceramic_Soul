@@ -28,6 +28,56 @@
         }
     }
 
+    .search-field {
+        width: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        /* Швидкість виїзду */
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        top: 43px;
+        /* Відступ від кнопки іконки */
+    }
+
+    /* Клас, який ми будемо додавати через JS */
+    .search-field.active {
+        display: block;
+        width: 270px;
+        /* Ширина розгорнутого пошуку */
+        opacity: 1;
+    }
+
+    #search-input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d4a373;
+        /* Колір під глину/кераміку */
+        outline: none;
+        border-radius: 4px;
+    }
+
+    #search-results {
+        background-color: v.$light;
+        padding: 10px 40px;
+        // color: #d4a373;
+
+        a {
+            color: #d4a373;
+        }
+    }
+
+    .search-icon-btn {
+
+        background: none;
+        border: none;
+        cursor: pointer;
+        // font-size: 20px;
+        z-index: 10;
+        padding: 0;
+    }
+
     &__nav {
         display: none;
     }
@@ -46,6 +96,7 @@
         &_active {
             transform: translateX(100%);
             opacity: 1;
+            z-index: 999;
         }
 
         &-close {
@@ -130,6 +181,12 @@
     }
 
     .header {
+        .search-field {
+            top: 10px;
+
+            /* Відступ від кнопки іконки */
+        }
+
         &__nav {
             margin-top: 20px;
             display: block;
@@ -162,6 +219,18 @@
 
 @media screen and (min-width: 1920px) {
     .header {
+        .search-field {
+            top: 5px;
+
+
+            /* Відступ від кнопки іконки */
+        }
+
+        /* Клас, який ми будемо додавати через JS */
+        .search-field.active {
+            width: 320px;
+        }
+
         &__logo {
             width: 150px;
             height: 150px;

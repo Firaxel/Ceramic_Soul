@@ -2,48 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ceramic soul website">
-    <meta name="author" content="Firaxel">
+    <load src="src/partials/head.html" />
     <title>Blog</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;1,400&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
     <section class="blog">
         <div class="container">
-            <div class="header">
-                <div class="header__menu">
-                    <button class="header__menu-close"></button>
-                    <nav class="header__menu-nav">
-                        <ul>
-                            <li><a class="header__menu-link" href="catalog.html">catalog</a></li>
-                            <li><a class="header__menu-link" href="blog.html">blog</a></li>
-                            <li><a class="header__menu-link" href="about.html">about</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="header__main">
-                    <div class="burger"><span></span><span></span><span></span></div>
-                    <a href="index.html" class="header__logo"><img src="/src/logo/ceramic_logo.png" alt="logo"></a>
-                    <div class="header__icons">
-                        <a href=""><span class="icon-search"></span></a>
-                        <a href=""><span class="icon-shopping-bag"></span></a>
-                    </div>
-                </div>
-                <nav class="header__nav">
-                    <ul>
-                        <li><a href="catalog.html" class="header__link">catalog</a></li>
-                        <li><a href="blog.html" class="header__link">blog</a></li>
-                        <li><a href="about.html" class="header__link">about</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <load src="/src/partials/header.html" />
 
             <h1 class="title-h2 blog__title">our digital notes</h1>
 
@@ -113,7 +79,7 @@
         </div>
     </section>
 
-    <div id="footer__container"></div>
+    <load src="src/partials/footer.html" />
 
     <script type="module" src="/src/js/script.js"></script>
 </body>

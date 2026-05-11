@@ -10,8 +10,6 @@ import JustValidate from 'just-validate';
 
 import "/src/sass/style.scss";
 
-import footerHtml from '/footer.html?raw';
-
 const observerOptions = {
     root: null, // стежимо відносно вікна браузера
     threshold: 0.2 // анімація почнеться, коли з'явиться 20% елемента
@@ -68,6 +66,8 @@ function initGitValidation() {
     }
 }
 
+initGitValidation();
+
 // footer form validation
 function initFooterValidation() {
     const subscribeForm = document.querySelector(".footer__subscribe");
@@ -95,6 +95,8 @@ function initFooterValidation() {
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
+initFooterValidation();
+
 function sendFormData(form) {
     const formData = new FormData(form);
     fetch("https://httpbin.org/post", {
@@ -109,17 +111,7 @@ function sendFormData(form) {
         .catch(err => console.error("Send error:", err));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    // check GIT form and send form
-    initGitValidation();
 
-    // inject footer if place for it and itself exists and then check and send form
-    const placeholder = document.getElementById('footer__container');
-    if (placeholder && footerHtml) {
-        placeholder.innerHTML = footerHtml;
-        initFooterValidation();
-    }
-})
 
 const burger = document.querySelector(".burger"),
     close = document.querySelector(".header__menu-close"),
@@ -184,3 +176,80 @@ try {
     //show default(first) content on pages opening
     contents.forEach((c, i) => (c.style.display = i === 0 ? "grid" : "none"));
 } catch (e) { };
+
+// site search
+
+const searchData = [
+    {
+        title: "Home",
+        url: "index.html",
+        content: "ceramic soul handmade craftsmanship home decor pottery dream"
+    },
+    {
+        title: "Our Store",
+        url: "catalog.html", // або де у тебе магазин
+        content: "shop now buy ceramics unique gift timeless pieces traditional techniques pottery tea coffee set"
+    },
+    {
+        title: "Blog",
+        url: "blog.html",
+        content: "art of pottery pottery wheel technique clay transformation in the kiln best material for pottery stoneware durability porcelain designs handcrafted pottery textures functional pottery pieces artisan pottery firing process clay types pottery glazing traditional ceramics"
+    },
+    {
+        title: "About us",
+        url: "about.html",
+        content: "check out our works tea set ceremony portfolio projects handmade artistry traditional craftsmanship pottery workshop creative space working with clay masterclasses handmade art pottery journey ceramics studio personal expression functional ceramics pottery community creative workshop spark creativity pottery skills"
+    }
+];
+
+window.runSearch = function () {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+
+    if (!query) {
+        resultsContainer.style.display = 'none';
+        return;
+    }
+
+    const filtered = searchData.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query)
+    );
+
+    if (filtered.length > 0) {
+        resultsContainer.innerHTML = filtered.map(item => `
+            <li><a href="${item.url}">${item.title}</a></li>
+        `).join('');
+        resultsContainer.style.display = 'block';
+    } else {
+        resultsContainer.innerHTML = '<li>No results found</li>';
+        resultsContainer.style.display = 'block';
+    }
+}
+
+
+
+window.toggleSearch = function () {
+    const searchField = document.getElementById('searchField');
+    const searchInput = document.getElementById('search-input');
+
+    searchField.classList.toggle('active');
+
+    // Якщо відкрили — ставимо фокус
+    if (searchField.classList.contains('active')) {
+        searchInput.focus();
+    } else {
+        // Якщо закрили — очищуємо пошук
+        searchInput.value = '';
+        document.getElementById('search-results').style.display = 'none';
+    }
+}
+
+// Закривати пошук, якщо клікнули поза ним
+document.addEventListener('click', (e) => {
+    const wrapper = document.querySelector('.search-icon-btn');
+    const searchField = document.getElementById('searchField');
+    if (!wrapper.contains(e.target)) {
+        searchField.classList.remove('active');
+    }
+});
